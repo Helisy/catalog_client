@@ -15,6 +15,7 @@ export default function Navbar() {
                     <FontAwesomeIcon className="icon" icon={faPlus} transform="grow-15"  />
                     PRODUTO
                 </button>
+                
             </div>
         </nav>
     );
