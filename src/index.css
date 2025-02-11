@@ -1,0 +1,424 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* ===== Global Variables ===== */
+:root {
+    --background: #f7f8fb;
+    --on-background: #ffffff;
+    --spacer: #c0c0c0;
+    --primary: #8ca5e2;
+    --primary-darker: #7a88c9;
+    --color-1: #f3bb6c;
+    --color-2: #e6889a;
+    --color-2-darker: #b86f7f;
+    --color-3: #78d378;
+    --color-4: #9581ee;
+    --color-5: #81cfb5;
+    --color-6: #bbbbbb;
+}
+
+/* ===== Global Reset ===== */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", serif;
+}
+
+body {
+    background-color: var(--background);
+    position: relative;
+}
+
+/* ===== Navigation Bar ===== */
+.navbar {
+    /* height: 4rem; */
+    /* width: calc(100% - 2rem); */
+    background-color: var(--on-background);
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    gap: .5rem;
+}
+
+.navbar__container {
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 0.5rem;
+    /* align-items: center; */
+}
+
+/* ===== Main Layout ===== */
+.container {
+    width: 100%;
+    height: calc(100vh - 5rem);
+    display: grid;
+    grid-template-columns: 20% 50% 30%;
+    grid-template-rows: 100%;
+}
+
+/* ===== Content Sections ===== */
+.content {
+    margin: 1rem 1rem 0 1rem;
+}
+
+.content--scroll {
+    overflow-y: auto;
+}
+
+/* ===== Cards ===== */
+.card {
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat", serif;
+    font-weight: 200;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background-color: var(--on-background);
+}
+
+.card__header {
+    padding: 1rem;
+    background-color: var(--color-1);
+    margin-bottom: 1rem;
+    color: var(--on-background);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card__header i {
+    cursor: pointer;
+    transform: scale(1.9);
+    margin-right: 0.5rem;
+}
+
+.card__header h2 {
+    font-size: 1.2rem;
+}
+
+.card__body {
+    height: 100%;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+}
+
+.card__body--grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.card__body textarea {
+    height: calc(100% - 1rem);
+    width: calc(100% - 1rem);
+    outline: 1px solid var(--spacer);
+    border: none;
+    border-radius: 0.5rem;
+    resize: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.card__section {
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    padding: 0.6rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.btn .icon
+{
+    margin-right: 1rem;
+}
+
+.btn--primary {
+    background-color: var(--primary);
+    color: var(--on-background);
+}
+
+.btn--primary:hover {
+    background-color: var(--primary-darker);
+}
+
+.btn--primary:active {
+    transition: 0.1s ease-in-out;
+    background-color: var(--spacer);
+}
+
+.btn--color-2 {
+    background-color: var(--color-2);
+    color: var(--on-background);
+}
+
+.btn--color-2:hover {
+    background-color: var(--color-2-darker);
+}
+
+.btn--color-2:active {
+    transition: 0.1s ease-in-out;
+    background-color: var(--spacer);
+}
+
+/* ===== Utility Classes ===== */
+.align-left {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.spacer {
+    width: 100%;
+    height: 1px;
+    background-color: var(--spacer);
+    margin: 1rem 0;
+}
+
+/* ===== Image Grid ===== */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    position: relative;
+}
+
+.image-grid__item {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* Mantém a proporção quadrada */
+    overflow: hidden;
+}
+
+.image-grid__item img {
+    border-radius: 0.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.image-grid__item.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* ===== Drag and Drop ===== */
+.drag-drop {
+    width: calc(100% - 2rem);
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background-color: var(--on-background);
+    display: none;
+}
+
+.drag-drop--active {
+    display: flex;
+    flex-direction: column;
+}
+
+.drag-drop__content {
+    height: calc(100% - 2rem);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background);
+    border: 1px dashed var(--primary);
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.drag-drop__content i {
+    font-size: 5rem;
+    color: var(--primary);
+}
+
+.drag-drop__content p {
+    font-size: 0.8rem;
+}
+
+/* ===== Search Bar ===== */
+
+.search-bar
+{
+    position: relative;
+}
+
+.search-input
+{
+    position: relative;
+    border-radius: .5rem;
+    border: 1px solid var(--spacer);
+    padding: .6rem 1rem;
+    display: flex;
+    align-items: center ;
+}
+
+.search-input:focus-within
+{
+    border: transparent;
+    outline: 3px solid var(--primary);
+}
+
+.search-input > .icon
+{
+    color: var(--spacer);
+    /* margin-right: 1rem; */
+}
+
+.search-input > input
+{
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    margin-left: .5rem;
+}
+
+.hover-sugestions
+{
+    position: absolute;
+    background-color: var(--on-background);
+    /* background-color: #78d378; */
+    top: calc(100% + .5rem);
+    width: 200%;
+    padding: .5rem;
+    gap: .25rem;
+    border-radius: .5rem;
+    border: 3px solid var(--primary);
+    flex-direction: column;
+    /* display: flex; */
+    display: none;
+}
+
+.hover-sugestions.show
+{
+    display: flex;
+}
+
+.hover-sugestions > div
+{
+    display: flex;
+    height: 3rem;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    padding: .25rem;
+}
+
+.hover-sugestions > div:hover
+{
+    background-color: var(--background);
+}
+
+.hover-sugestions > div > p
+{
+    width: 60%; /* Defina um tamanho fixo para o container */
+    white-space: nowrap; /* Impede quebra de linha */
+    overflow: hidden; /* Oculta o excesso de texto */
+    text-overflow: ellipsis; /* Adiciona "..." ao final */
+}
+
+/* ===== Other ===== */
+.side-by 
+{
+    display: flex;
+    gap: .5rem;
+}
+
+.square-image-flex
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ajustável */
+    aspect-ratio: 1/1;
+}
+
+.square-image-flex img 
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: .5rem;
+}
+
+/* ===== Media Queries ===== */
+@media only screen and (min-width: 1900px) {
+    body {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .container {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .navbar
+    {
+        flex-direction: column;
+    }
+
+    .container {
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto auto;
+    }
+
+    .container > div:nth-child(1) {
+        grid-area: 2 / 1;
+        height: 20rem;
+    }
+
+    .container > div:nth-child(2) {
+        grid-area: 1 / 1;
+    }
+
+    .content--scroll {
+        overflow: unset;
+    }
+
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .image-grid__item.large {
+        grid-column: span 2;
+    }
+
+    .hover-container {
+        position: fixed;
+    }
+
+    .img-display img {
+        height: auto;
+        width: 100%;
+    }
+
+    .notification > div {
+        min-width: 50vw;
+    }
+
+    .card__body--grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
